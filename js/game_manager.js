@@ -11,6 +11,7 @@ function GameManager(size, InputManager, Actuator, StorageManager) {
   this.inputManager.on("keepPlaying", this.keepPlaying.bind(this));
 
   this.setup();
+  this.simular();
 }
 // Restart the game
 GameManager.prototype.restart = function () {
@@ -279,4 +280,21 @@ GameManager.prototype.tileMatchesAvailable = function () {
 
 GameManager.prototype.positionsEqual = function (first, second) {
   return first.x === second.x && first.y === second.y;
+};
+function sleep(millisegundos) {
+  var inicio = new Date().getTime();
+  while ((new Date().getTime() - inicio) < millisegundos){
+  }
+};
+GameManager.prototype.simular = function () {
+    //sleep(500);
+  for (var i = 1; i <= 600; i++) {
+    var numero = Math.floor(Math.random() * 4);
+    //this.move(numero);
+    setTimeout(this.move(numero), 500);
+  
+    //this.inputManager.on("move", numero);
+    //sleep(500);
+    //alert(numero);
+  }
 };

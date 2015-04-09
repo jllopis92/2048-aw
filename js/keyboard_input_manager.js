@@ -72,7 +72,7 @@ KeyboardInputManager.prototype.listen = function () {
   this.bindButtonPress(".retry-button", this.restart);
   this.bindButtonPress(".restart-button", this.restart);
   this.bindButtonPress(".keep-playing-button", this.keepPlaying);
-  this.bindButtonPress(".simular-button", this.simular);
+  //this.bindButtonPress(".simular-button", this.simular);
 
   // Respond to swipe events
   var touchStartClientX, touchStartClientY;
@@ -146,7 +146,7 @@ KeyboardInputManager.prototype.restart = function (event) {
     sleep(50);
     alert(numero);
   };*/
-KeyboardInputManager.prototype.simular = function (event) {
+/*KeyboardInputManager.prototype.simular = function (event) {
     //sleep(500);
   for (var i = 1; i <= 600; i++) {
     var numero = Math.floor(Math.random() * 4);
@@ -154,11 +154,11 @@ KeyboardInputManager.prototype.simular = function (event) {
     //sleep(500);
     //alert(numero);
   };
-  /*for (var i = 1; i <= 20; i++) {
+  for (var i = 1; i <= 20; i++) {
     var numero = Math.floor(Math.random() * 4) + 0;
     setTimeOut("this.emit('move', numero)", 500);
-  };*/
-};
+  };
+};*/
 
 KeyboardInputManager.prototype.keepPlaying = function (event) {
   event.preventDefault();
