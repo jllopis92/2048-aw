@@ -1,17 +1,19 @@
-function GameManager(size, InputManager, Actuator, StorageManager) {
+function GameManager(size, InputManager, Actuator, StorageManager, simulaJuego) {
   this.size           = size; // Size of the grid
   this.inputManager   = new InputManager;
   this.storageManager = new StorageManager;
   this.actuator       = new Actuator;
+  this.simulaJuego    = new simulaJuego(this);
 
   this.startTiles     = 2;
+  this.currentMove = 0;
 
   this.inputManager.on("move", this.move.bind(this));
   this.inputManager.on("restart", this.restart.bind(this));
   this.inputManager.on("keepPlaying", this.keepPlaying.bind(this));
 
   this.setup();
-  this.simular();
+  this.simularAuto();
 }
 // Restart the game
 GameManager.prototype.restart = function () {
@@ -281,20 +283,26 @@ GameManager.prototype.tileMatchesAvailable = function () {
 GameManager.prototype.positionsEqual = function (first, second) {
   return first.x === second.x && first.y === second.y;
 };
-function sleep(millisegundos) {
-  var inicio = new Date().getTime();
-  while ((new Date().getTime() - inicio) < millisegundos){
-  }
+
+GameManager.prototype.comienza = function () {
+   alert ("simula");
 };
-GameManager.prototype.simular = function () {
+GameManager.prototype.simularAuto = function () {
     //sleep(500);
-  for (var i = 1; i <= 600; i++) {
-    var numero = Math.floor(Math.random() * 4);
-    //this.move(numero);
-    setTimeout(this.move(numero), 500);
-  
-    //this.inputManager.on("move", numero);
-    //sleep(500);
-    //alert(numero);
-  }
+
+    /*this.currentMove++;
+
+  if(this.currentMove >= this.moves.length) {
+      this.currentMove = 0;
+   }
+  */ 
+  //for (var i = 1; i <= 600; i++) {
+      this.move(this.simulaJuego.randomMov());
+      //this.move(numero);
+      setTimeout(this.simularAuto.bind(this), 500);
+    
+      //this.inputManager.on("move", numero);
+      //sleep(500);
+      //alert(numero);
+  //}
 };
