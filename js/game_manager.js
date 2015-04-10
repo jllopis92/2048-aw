@@ -7,10 +7,13 @@ function GameManager(size, InputManager, Actuator, StorageManager, simulaJuego) 
 
   this.startTiles     = 2;
   this.currentMove = 0;
+  this.auto = 0;
 
   this.inputManager.on("move", this.move.bind(this));
   this.inputManager.on("restart", this.restart.bind(this));
   this.inputManager.on("keepPlaying", this.keepPlaying.bind(this));
+  this.inputManager.on("automatico", this.comienza.bind(this));
+  this.inputManager.on("fin", this.termina.bind(this));
 
   this.setup();
   this.simularAuto();
@@ -285,7 +288,12 @@ GameManager.prototype.positionsEqual = function (first, second) {
 };
 
 GameManager.prototype.comienza = function () {
-   alert ("simula");
+  this.auto = 1;
+  this.simularAuto();
+};
+GameManager.prototype.termina = function () {
+  this.auto = 0;
+  this.simularAuto();
 };
 GameManager.prototype.simularAuto = function () {
     //sleep(500);
@@ -296,7 +304,7 @@ GameManager.prototype.simularAuto = function () {
       this.currentMove = 0;
    }
   */ 
-  //for (var i = 1; i <= 600; i++) {
+  if (this.auto != 0) {
       this.move(this.simulaJuego.randomMov());
       //this.move(numero);
       setTimeout(this.simularAuto.bind(this), 500);
@@ -304,5 +312,5 @@ GameManager.prototype.simularAuto = function () {
       //this.inputManager.on("move", numero);
       //sleep(500);
       //alert(numero);
-  //}
+  }
 };
