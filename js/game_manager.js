@@ -160,17 +160,7 @@ GameManager.prototype.move = function (direction) {
         // Only one merger per row traversal?
         if (next && next.value === tile.value && !next.mergedFrom) {
           var merged = new Tile(positions.next, tile.value * 2);
-          /*switch(tile.value){
-            case 2:
-              var merged = new Tile(positions.next, tile.value * 1024);
-              break;
-            case 4:
-              var merged = new Tile(positions.next, tile.value * 512);
-              break;
-            default:
-              var merged = new Tile(positions.next, tile.value * 2);
-              break;
-          }*/
+          
           merged.mergedFrom = [tile, next];
 
           self.grid.insertTile(merged);
@@ -296,21 +286,12 @@ GameManager.prototype.termina = function () {
   this.simularAuto();
 };
 GameManager.prototype.simularAuto = function () {
-    //sleep(500);
-
-    /*this.currentMove++;
-
-  if(this.currentMove >= this.moves.length) {
-      this.currentMove = 0;
-   }
-  */ 
+    
   if (this.auto != 0) {
       this.move(this.simulaJuego.randomMov());
-      //this.move(numero);
+      
       setTimeout(this.simularAuto.bind(this), 500);
     
-      //this.inputManager.on("move", numero);
-      //sleep(500);
-      //alert(numero);
+      
   }
 };

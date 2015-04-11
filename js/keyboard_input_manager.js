@@ -140,27 +140,6 @@ KeyboardInputManager.prototype.restart = function (event) {
   event.preventDefault();
   this.emit("restart");
 };
-/*KeyboardInputManager.prototype.simular2 = function () {
-    //sleep(500);    
-    var numero = Math.floor(Math.random() * 4);
-    this.emit("move", numero);
-    this.emit("keepPlaying");
-    sleep(50);
-    alert(numero);
-  };*/
-/*KeyboardInputManager.prototype.simular = function (event) {
-    //sleep(500);
-  for (var i = 1; i <= 600; i++) {
-    var numero = Math.floor(Math.random() * 4);
-    this.emit("move", numero);
-    //sleep(500);
-    //alert(numero);
-  };
-  for (var i = 1; i <= 20; i++) {
-    var numero = Math.floor(Math.random() * 4) + 0;
-    setTimeOut("this.emit('move', numero)", 500);
-  };
-};*/
 
 KeyboardInputManager.prototype.keepPlaying = function (event) {
   event.preventDefault();
